@@ -6,7 +6,46 @@
   <title>Movies | MovieTime</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Trailer Popup Styles */
+    .trailer-popup {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .trailer-popup iframe {
+      width: 80%;
+      height: 70vh;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .close-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #e50914;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .close-btn:hover {
+      background-color: #b0060f;
+    }
+  </style>
 </head>
+
 <body>
   <!-- Loading Screen -->
   <div class="loading-screen" id="loadingScreen">
@@ -29,62 +68,69 @@
     <h2>Featured Movies</h2>
 
     <div class="movie-row">
+      <!-- Example Movie -->
       <div class="movie-card">
-        <a href="https://www.youtube.com/watch?v=BMUhYuKN4eo" target="_blank" class="movie-link">
+        <a href="#" class="movie-link" data-trailer="https://www.youtube.com/embed/BMUhYuKN4eo">
           <img src="images/ss.png" alt="Seven Sundays">
         </a>
         <div class="movie-info">
           <h3>Seven Sundays</h3>
           <p>The Bonifacio family reunites after years apart when their father is diagnosed with cancer, rediscovering love and forgiveness.</p>
-          <a href="https://www.youtube.com/watch?v=BMUhYuKN4eo" target="_blank" class="watch-btn">Watch Trailer</a>
+          <a href="#" class="watch-btn" data-trailer="https://www.youtube.com/embed/BMUhYuKN4eo">Watch Trailer</a>
         </div>
       </div>
 
       <div class="movie-card">
-        <a href="https://www.youtube.com/watch?v=4LhL73HI7Co" target="_blank" class="movie-link">
+        <a href="#" class="movie-link" data-trailer="https://www.youtube.com/embed/4LhL73HI7Co">
           <img src="images/dnp.png" alt="Diary ng Panget">
         </a>
         <div class="movie-info">
           <h3>Diary ng Panget</h3>
           <p>A romantic-comedy about Eya, a kind-hearted girl who becomes the maid of a rich, arrogant classmate, and love soon follows.</p>
-          <a href="https://www.youtube.com/watch?v=4LhL73HI7Co" target="_blank" class="watch-btn">Watch Trailer</a>
+          <a href="#" class="watch-btn" data-trailer="https://www.youtube.com/embed/4LhL73HI7Co">Watch Trailer</a>
         </div>
       </div>
 
       <div class="movie-card">
-        <a href="https://www.youtube.com/watch?v=mrRsWUoz3RM" target="_blank" class="movie-link">
+        <a href="#" class="movie-link" data-trailer="https://www.youtube.com/embed/mrRsWUoz3RM">
           <img src="images/omy.png" alt="Our Mighty Yaya">
         </a>
         <div class="movie-info">
           <h3>Our Mighty Yaya</h3>
           <p>A loving nanny teaches a wealthy family the meaning of care, humility, and a mother’s unconditional love.</p>
-          <a href="https://www.youtube.com/watch?v=mrRsWUoz3RM" target="_blank" class="watch-btn">Watch Trailer</a>
+          <a href="#" class="watch-btn" data-trailer="https://www.youtube.com/embed/mrRsWUoz3RM">Watch Trailer</a>
         </div>
       </div>
 
       <div class="movie-card">
-        <a href="https://www.youtube.com/watch?v=dafMpIs1Bz0" target="_blank" class="movie-link">
+        <a href="#" class="movie-link" data-trailer="https://www.youtube.com/embed/dafMpIs1Bz0">
           <img src="images/tu.png" alt="Trip Ubusan">
         </a>
         <div class="movie-info">
           <h3>Trip Ubusan: The Lolas vs Zombies</h3>
           <p>The famous Lolas face a zombie outbreak in a hilarious yet heartwarming road trip adventure.</p>
-          <a href="https://www.youtube.com/watch?v=dafMpIs1Bz0" target="_blank" class="watch-btn">Watch Trailer</a>
+          <a href="#" class="watch-btn" data-trailer="https://www.youtube.com/embed/dafMpIs1Bz0">Watch Trailer</a>
         </div>
       </div>
 
       <div class="movie-card">
-        <a href="https://www.youtube.com/watch?v=lDUa2_yewHY" target="_blank" class="movie-link">
+        <a href="#" class="movie-link" data-trailer="https://www.youtube.com/embed/lDUa2_yewHY">
           <img src="images/pb.png" alt="Praybeyt Benjamin">
         </a>
         <div class="movie-info">
           <h3>The Unkabogable Praybeyt Benjamin</h3>
           <p>A gay man joins the military and proves that courage and strength come from the heart.</p>
-          <a href="https://www.youtube.com/watch?v=lDUa2_yewHY" target="_blank" class="watch-btn">Watch Trailer</a>
+          <a href="#" class="watch-btn" data-trailer="https://www.youtube.com/embed/lDUa2_yewHY">Watch Trailer</a>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Trailer Popup -->
+  <div class="trailer-popup" id="trailerPopup">
+    <iframe id="trailerFrame" src="" allowfullscreen></iframe>
+    <button class="close-btn" id="closePopup">Close Trailer</button>
+  </div>
 
   <footer>
     © 2025 MovieTime
@@ -92,8 +138,11 @@
 
   <script>
     const loadingScreen = document.getElementById("loadingScreen");
+    const popup = document.getElementById("trailerPopup");
+    const frame = document.getElementById("trailerFrame");
+    const closeBtn = document.getElementById("closePopup");
 
-    // Show loading screen on navbar link click
+    // Navbar loading
     document.querySelectorAll(".nav-links a").forEach(link => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -105,21 +154,33 @@
       });
     });
 
-    // Loading for trailers (buttons and images)
-    function handleTrailerClick(e, url) {
-      e.preventDefault();
-      loadingScreen.style.display = "flex";
-      setTimeout(() => {
-        window.open(url, "_blank");
-        loadingScreen.style.display = "none";
-      }, 1500);
-    }
-
+    // Show trailer popup
     document.querySelectorAll(".watch-btn, .movie-link").forEach(el => {
       el.addEventListener("click", (e) => {
-        const trailerURL = el.getAttribute("href");
-        handleTrailerClick(e, trailerURL);
+        e.preventDefault();
+        const trailerURL = el.getAttribute("data-trailer");
+        loadingScreen.style.display = "flex";
+
+        setTimeout(() => {
+          frame.src = trailerURL + "?autoplay=1";
+          popup.style.display = "flex";
+          loadingScreen.style.display = "none";
+        }, 1200);
       });
+    });
+
+    // Close popup
+    closeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+      frame.src = ""; // stop the video
+    });
+
+    // Close popup on background click
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.style.display = "none";
+        frame.src = "";
+      }
     });
   </script>
 </body>
