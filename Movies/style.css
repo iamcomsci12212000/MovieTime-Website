@@ -5,6 +5,7 @@ body {
   color: #3d2b56;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /* Navbar */
@@ -15,6 +16,7 @@ body {
   background: #d1b3ff;
   padding: 15px 50px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease-in-out;
 }
 
 .logo {
@@ -47,6 +49,7 @@ body {
   position: relative;
   text-align: center;
   overflow: hidden;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .hero-img {
@@ -83,7 +86,7 @@ body {
   background: #c8b6ff;
 }
 
-/* Movies */
+/* Movies Section */
 .movie-section {
   padding: 50px;
   text-align: center;
@@ -163,4 +166,47 @@ footer {
   padding: 15px;
   margin-top: 30px;
   font-weight: 600;
+}
+
+/* Loading Screen */
+.loading-screen {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(61, 43, 86, 0.95);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #a685e2;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #d8c3ff;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
