@@ -213,18 +213,18 @@ footer {
 
 /* Trailer Popup */
 .trailer-popup {
-  display: none;
+  display: none; /* Hidden by default */
   position: fixed;
-  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
+  z-index: 1000;
   flex-direction: column;
-  animation: fadeIn 0.4s ease-in-out;
+  padding: 20px;
 }
 
 .trailer-popup iframe {
@@ -232,23 +232,24 @@ footer {
   height: 70%;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 0 20px #000;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
 .close-trailer {
   margin-top: 20px;
-  background: crimson;
+  background: #b57edc;
   color: white;
-  border: none;
   padding: 10px 20px;
-  border-radius: 8px;
+  border: none;
+  border-radius: 20px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: bold;
   transition: background 0.3s;
 }
 
 .close-trailer:hover {
-  background: darkred;
+  background: #d7b5ff;
 }
+
 
 
