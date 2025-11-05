@@ -1,0 +1,166 @@
+/* Import Fonts */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f3e8ff;
+  color: #3d2b56;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #d1b3ff;
+  padding: 15px 50px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 24px;
+  font-weight: bold;
+  color: #3d2b56;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #3d2b56;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #7b5ac9;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text h1 {
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.btn {
+  background: #a685e2;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #c8b6ff;
+}
+
+/* Movies */
+.movie-section {
+  padding: 50px;
+  text-align: center;
+}
+
+.movie-section h2 {
+  font-family: "Cinzel Decorative", cursive;
+  color: #5e3d99;
+}
+
+.movie-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.movie-card {
+  background: #e9ddff;
+  border-radius: 15px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.movie-card:hover {
+  transform: translateY(-10px);
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+  height: 370px;
+  object-fit: cover;
+}
+
+.movie-info {
+  padding: 15px;
+}
+
+.watch-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #b57edc;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.watch-btn:hover {
+  background: #d7b5ff;
+}
+
+/* About Page */
+.about {
+  padding: 60px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about h1 {
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #5e3d99;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #d1b3ff;
+  color: #3d2b56;
+  padding: 15px;
+  margin-top: 30px;
+  font-weight: 600;
+}
