@@ -8,9 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading movies...</div>
+  </div>
+
   <!-- Navigation -->
   <nav class="navbar">
-    <div class="logo"> MovieTime</div>
+    <div class="logo">MovieTime</div>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="movies.html">Movies</a></li>
@@ -24,20 +30,25 @@
     <div class="hero-text">
       <h1>Welcome to MovieTime</h1>
       <p>Discover, watch, and relive the best Filipino movies here!</p>
-      <a href="movies.html" class="btn">Explore Movies</a>
+      <a href="#" class="btn" id="exploreBtn">Explore Movies</a>
     </div>
   </section>
 
   <footer>
     © 2025 MovieTime
   </footer>
+
+  <script>
+    const exploreBtn = document.getElementById("exploreBtn");
+    const loadingScreen = document.getElementById("loadingScreen");
+
+    exploreBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      loadingScreen.style.display = "flex"; // show loader
+      setTimeout(() => {
+        window.location.href = "movies.html";
+      }, 2000); // wait 2 seconds before redirect
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
